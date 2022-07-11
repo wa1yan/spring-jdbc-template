@@ -6,7 +6,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.PreparedStatementCreatorFactory;
+import org.springframework.jdbc.core.RowMapper;
+
+import com.waiyanhtet.jdbcTemplate.dto.Member;
 
 @Configuration
 public class FactoryConfig {
@@ -37,5 +41,10 @@ public class FactoryConfig {
 		return new PreparedStatementCreatorFactory(sql, new int[] {
 				Types.VARCHAR
 		});
+	}
+	
+	@Bean
+	RowMapper<Member> rowMapper(){
+		return new BeanPropertyRowMapper<>(Member.class);
 	}
 }

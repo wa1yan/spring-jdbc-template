@@ -21,7 +21,6 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import com.waiyanhtet.jdbcTempate.config.AppConfig;
-import com.waiyanhtet.jdbcTemplate.dao.config.MemberRowMapper;
 import com.waiyanhtet.jdbcTemplate.dto.Member;
 
 @SpringJUnitConfig(classes = AppConfig.class)
@@ -32,7 +31,7 @@ public class JdbcOpertaionTestWithPrepareStatement {
 	private JdbcOperations operations;
 	
 	@Autowired
-	private MemberRowMapper rowMapper;
+	private RowMapper<Member> rowMapper;
 	
 	@Test
 	@DisplayName("1. Execute with PrepareStatment Creator and callback for insert")
